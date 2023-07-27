@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/30_traversing.css">
+    <script src="../_js/jquery-3.6.0.js"></script>
+    <style>
+        li:has(b){
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btnPickItem">挑選</button>
+    <button onclick="reload()">重整</button>
+    <hr>
+    
+    <div id="tw">
+        <h4>台灣水果</h4>
+        <ul id="twList">
+            <li class="grape">巨峰葡萄</li>
+            <li>金鑽鳳梨</li>
+            <li>麻豆文旦</li>
+            <li>小玉西瓜</li>
+            <li>大湖草莓</li>
+        </ul>
+    </div>
+
+    <div id="jp">
+        <h4>日本水果</h4>
+        <ul id="jpList">
+            <li><b class="grape">麝香葡萄</b></li>
+            <li><b>夕張哈密瓜</b></li>
+            <li><b>甘王草莓</b></li>
+            <li><b>愛媛柑橘</b></li>
+            <li><b>岡山白桃</b></li>
+        </ul>
+    </div>
+
+    <div id="demo"></div>
+    <script>
+        //挑選
+        // let twfruit = document.getElementById("twList").innerHTML;
+        // let jpfurit = document.getElementById("jpList").innerHTML;
+        // demo.innerHTML = `${twfruit}${jpfurit}`;
+        // $('li').each(function(){
+        //     demo.innerHTML += `${this.innerText}<br>`
+        // })
+        // filter
+        // 以為會留下巨峰葡萄跟麝香葡萄，但只給我巨峰葡萄
+        // 因為filter只篩選，自己本身元素身上的
+        // <li><b class="grape">麝香葡萄</b></li> 麝香葡萄算是b標籤裡的葡萄
+        // $('li').filter('.grape').each(function(){
+        //         demo.innerHTML += `${this.innerText}<br>`;
+        // })
+        // filter第二種
+        // $('li').filter(function(aa,bb){
+        //      return $(bb).text().includes("草莓") == true || $(bb).text().includes("哈密瓜") == true
+        // }).each(function(){
+        //      demo.innerHTML += `${this.innerText}<br>`;
+        // })
+        // find()
+        // demo.innerHTML += `<hr/>`;
+        // $('ul').children('li').each(function(){
+        //     demo.innerHTML += `${this.innerText}<br>`;
+        // })
+        // parent()
+        // $('.grape').parent().each(function(){
+        //     demo.innerHTML += `${this.innerText}<br>`;
+        // })
+        // closet()
+        // $('.grape').closest('ul').each(function(){
+        //     demo.innerHTML += `${this.innerText}<br>`;
+        // })
+        // contents()
+        // $('div').contents().each(function(index,elem){
+        //     //如果元素不是換行的話我才要console.log出來查看
+        //     //a.我只想要看的見的內容
+        //     //b.我不要#text
+        //     if(elem.nodeType != 3){
+        //         console.log(elem);
+        //     }
+        // })
+        // :contains()
+        // demo.innerText =  $('li:contains("鳳梨")').text();
+        // :has()
+    </script>
+
+    <script>
+        function reload(){
+            window.location.reload();
+        }
+        // * 比較底下幾種 尋找|篩選 元素的方式 *
+        btnPickItem.onclick = function(){
+            // console.log($('ul:has("b")').text());
+            $('ul:has("b")').each(function(){
+                demo.innerHTML += `${this.innerHTML}<br>`;
+            });
+        }
+
+        // 10. filter   ===> $().filter()
+        // 11. find     ===> $().find()
+        // 12. children ===> $().children()
+        // 13. parent   ===> $().parent()
+        // 14. closest  ===> $().closest()
+        
+        // 15. eq       ===> $().eq()
+        // 16. contents ===> $().contents()
+
+        // 21. :contains ===> $(selector:contains(text))
+        // 22. :has()    ===> $(selector:has(selector))
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    身分證字號 <input id="num" type="text"><br>
+    <input id="apple" type="checkbox" >
+    
+    
+    <script>
+        // 10. 透過 $().prop() 和 $().attr()
+        //     取得 <input type="checkbox"> 元素 的 checked 屬性
+        // let x = $('#apple').prop('checked');
+        // let y = $('#apple').attr('checked');
+        // console.log(x); //true      //false
+        // console.log(y); //checked   //undefined
+        $('#num').prop('value','A2');
+        $('#apple').prop('checked',true);
+    </script>
+
+</body>
+
+</html>

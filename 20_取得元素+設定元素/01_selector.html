@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.6.0.js"></script>
+    <style>
+        input[type="button"]{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h4>jQuery()</h4>
+    <p><a href="https://api.jquery.com/jQuery/">https://api.jquery.com/jQuery/</a></p>
+    <h4>jQuery Selectors</h4>
+    <p><a href="https://www.w3schools.com/jquery/jquery_ref_selectors.asp">https://www.w3schools.com/jquery/jquery_ref_selectors.asp</a></p>
+
+    <hr>
+
+    <h4>利用CSS樣式選擇器選擇元素</h4>
+    <ul id="myList">
+        <li>標籤</li>
+        <li>屬性(#id)</li>
+        <li>類別(.class)</li>
+        <li>其他</li>
+    </ul>
+
+    <h4>jQuery函式庫可以做什麼？</h4>
+    <ul>
+        <li>尋找元素</li>
+        <li>變更DOM</li>
+        <li>掛載事件</li>
+        <li>其他</li>
+    </ul>
+
+    <script>
+        // 10. 挑選 h4 標籤
+        let x = $('h4');
+        console.log(x);
+
+        // 20. 透過 #myList 選擇 ul 標籤
+        let y = $('#myList');
+        console.log(y);
+
+        // 30. 挑選 li 標籤
+        let z = $('li');
+        console.log(z);
+
+        // 40. 挑選第一個出現的 li 
+        let c = $('li:first');
+        console.log(c);
+
+        // 50. 挑選各別元素中第一個出現的 li
+        let b = $('li:first-child');
+        console.log(b);
+
+        // 60. jQuery 函式庫是否有針對 <input> 提供特殊的選擇方式？
+        
+    </script>
+
+</body>
+
+</html>

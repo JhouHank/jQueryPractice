@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //底下說明僅針對當前範例
+        //物件裡面的「普通函式」的this指向該物件
+        //物件裡面的「箭頭函式」的this指向window物件
+        //箭頭函式不只是縮寫，也會改變this的指向
+        let x = {
+            apple: "我是蘋果",
+            bee: function () {
+                console.log(this); //x物件
+            },
+            cat: () => {
+                console.log(this); //window物件
+            }
+        }
+        x.cat();
+    </script>
+
+</body>
+
+</html>

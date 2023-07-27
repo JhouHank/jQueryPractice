@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+
+    <button id="btnAdd">附加清單</button>
+    <hr>
+    <div>
+        <h4>底下是清單</h4>
+        <ol id="bee">
+            <li id="milk">迷客夏</li>
+            <li id="fifty">50嵐</li>
+            <li id="blackTea">可不可熟成紅茶</li>
+        </ol>
+    </div>
+
+    <script>
+        
+        btnAdd.onclick = function () {
+            
+          // 10. 測試 + 比較底下幾種方法的差異:
+          //    $().before()
+          //    $().after()
+            $('#fifty').before('<li>在50嵐前面</li>')
+            $('#fifty').after('<li>在50嵐後面</li>')
+          //--------------------------------
+          //    $().prepend() 
+          //    $().append()
+            $('#milk').prepend('<span>--在迷克夏裡面--</span>')
+            $('#milk').append('<span>++在迷克夏裡面++</span>')
+            $('#bee').prepend('<li>整個清單的最前面</li>')
+            $('#bee').append('<li>整個清單的最後面</li>')
+          //--------------------------------
+          //    $().appendTo()
+            $('<span>--在紅茶裡面--</span>').appendTo('#blackTea')
+            
+        }
+    </script>
+
+</body>
+
+</html>

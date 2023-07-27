@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/25_delete.css">
+    <script src="../_js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+
+    <h4>Category: DOM Removal</h4>
+    <p><a href='https://api.jquery.com/category/manipulation/dom-removal/'>https://api.jquery.com/category/manipulation/dom-removal/</a></p>
+    <hr>
+    <h2>皮卡丘</h2>
+    <button id="btnEmpty">empty</button>
+    <button id="btnRemove">remove</button>
+    <button id="btnDetach">detach</button>
+    <button id="btnUnwrap">unwrap</button>
+    <button onclick="reload()">reload</button>
+    <hr>
+    <br>
+    <div>
+        <button id="btnPikachu">皮卡丘</button>
+    </div>
+
+    <script>
+        // 10. 試著比較出 empty() 和 remove() 的差異
+        //$('h2').empty();
+        btnEmpty.onclick = function(){
+            $('#btnPikachu').empty();
+        }
+        btnRemove.onclick = function(){
+            //先把皮卡丘存起來，然後remove，然後再加回來
+            let x = $('#btnPikachu');
+            $('#btnPikachu').remove();
+            $('div').append(x);
+        }
+        btnDetach.onclick = function(){
+            //先把皮卡丘存起來，然後detach，然後再加回來
+            let y = $('#btnPikachu');
+            $('#btnPikachu').detach();
+            $('div').append(y);
+        }
+        btnUnwrap.onclick = function(){
+            $('#btnPikachu').unwrap();
+        }
+        function reload(){
+            window.location.reload();
+        }
+        
+        //empty是把該標籤的內容全部移除
+        //remove是把該標籤及其內容全部移除
+
+        // 20. 試著比較出 detach() 和 remove() 的差異
+        //      * jQuery 綁定事件的方法之一: $().on('事件名稱', function(){})
+        // btnPikachu.onclick = function () {
+        //     console.log("皮卡皮卡");
+        // }
+        //用下面這個方式綁定，才有辦法綁定jQuery data
+        //而只有綁定jQuery data才有辦法比較remove跟detach
+        //remove是把jQuery data都給刪掉，detach則是有保留jQuery data
+        $('#btnPikachu').on('click',function () {
+            console.log("皮卡皮卡");
+        })
+        
+    </script>
+
+</body>
+
+</html>

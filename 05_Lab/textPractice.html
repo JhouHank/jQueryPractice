@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <pre>
+        text() 別人寫的 => jQuery團隊寫的
+        1. 當我呼叫沒給「資料」的時候，函式會回傳字串
+            => console.log("x");
+        2. 當我呼叫有給「資料」的時候，函式會設定元素
+            => console.log("y");
+    </pre>
+    <script>
+        function apple(bee){
+            //if(data) 也是對的
+            if(bee == undefined){
+                console.log("x");
+            }else{
+                console.log("y");
+            }
+        }
+        apple();
+    </script>
+</body>
+</html>
