@@ -7,19 +7,53 @@
 </head>
 
 <body>
-    
     <script>
-
-        // 10. 用 JavaScript 改變body背景底色
-
-        // 20. 用 jQuery 改變body背景底色
-                
-        // 30. 隨機產生背景底色
-        
-        // 40. 點選按鈕產生背景底色
-        
-        // 50. 加入 setInterval 讓畫面每秒更新上述設定
-        
+        // 為什麼需要函式
+        // 這裡還要再改造
+        function getRandom(x, y = 0) {
+            return Math.floor(Math.random() * x + y);
+            // y是初始值，有設預設值為0
+        }
+        //當文件準備好的時候
+        $(document).ready(function () {
+            $('body').append('<img src="images/001.png">')
+            // 無按鈕版本
+            setInterval(function () {
+                // console.log(123);
+                let pic = getRandom(3, 1);
+                let picWithZero = pic.toString().padStart(3, "0");
+                //補零 :  字串.padStart(目標長度,用來填充的字串)
+                $('img').prop('src', `images/${picWithZero}.png`)
+                // Math.random()回傳0到1之間(不包含0跟1)的隨機數字
+                // 所以0-255要乘256
+                let x = getRandom(256);
+                let y = getRandom(256);
+                let z = getRandom(256);
+                $('body').css('backgroundColor', `rgb(${x},${y},${z})`);
+            }, 1000)
+            // 有按鈕版本
+            // $('body').append('<button>改變顏色</button>');
+            // $('button').on('click', function () {
+            //     //console.log(123);
+            //     //Math.random()回傳0到1之間(不包含0跟1)的隨機數字
+            //     //0-255要乘256
+            //     // $('body').css('background-color', `rgb(${x},${y},${z})`);
+            //     let x = getRandom();
+            //     let y = getRandom();
+            //     let z = getRandom();
+            //     $('body').css('backgroundColor', `rgb(${x},${y},${z})`);
+            // })
+            //////////////////////////////////////////////////////////////
+            // 10. 用 JavaScript 改變body背景底色
+            //document.body.style.backgroundColor = "yellow";
+            // 20. 用 jQuery 改變body背景底色
+            //$('body').css('backgroundColor','pink');
+            //$('body').css('background-color','rgb(0,255,0)'); //兩個都可以
+            // 30. 隨機產生背景底色
+            // 40. 點選按鈕產生背景底色
+            // 50. 加入 setInterval 讓畫面每秒更新上述設定
+            //setInterval(changeColor, 1000)
+        })
     </script>
 </body>
 

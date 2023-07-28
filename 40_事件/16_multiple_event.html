@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/40_events.css">
+    <script src="../_js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+
+    <!-- 10. 顯示資訊的地方 -->
+    <h5 id="demo">Hello!</h5>
+    <hr>
+    <div id="outside"></div>
+    <hr>
+    <ul>
+        <li>Apple</li>
+        <li>Bee</li>
+        <li>Cat</li>
+        <li>Dog</li>
+    </ul>
+
+    <script>
+
+        $(document).ready(function () {
+            // 20. 透過事件監聽而產生的 "事件物件"
+            //   * 點選 div 帶入座標
+            $('#outside').on('click', function (aa) {
+                console.log(aa);
+                let x = aa.originalEvent.x;
+                let y = aa.originalEvent.y;
+                //console.log(x, y);
+                $('#demo').text(`X軸:${x},Y軸:${y}`);
+            })
+            // 30. 同時設定兩個事件在 <li> 元素上
+            //   * click 和 mouseover
+            // v1
+            // $('li').on('click', function () {
+            //     console.log("皮卡");
+            // })
+            // $('li').on('mouseover', function () {
+            //     console.log("胖丁");
+            // })
+            // v2 如果兩個事件要做的事情完全不同，用v2比較好
+            // $('li').on({
+            //     click: function () {
+            //         console.log("皮卡");
+            //     },
+            //     mouseover: function () {
+            //         console.log("胖丁");
+            //     }
+            // })
+            // v3 如果兩個事件要做的事情相同，用v3比較好
+            $('li').on('click mouseover', function (bb) {
+                console.log(bb);
+                console.log(bb.type);
+            })
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

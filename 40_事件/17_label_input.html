@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <!-- 一般我們知道的 -->
+    <input type="checkbox" id="check1">
+    <label id="label1" for="check1">蘋果</label>
+    <!-- 不確定 -->
+    <label id="label2">
+        <input type="checkbox" id="check2">
+        蜜蜂
+    </label>
+    <button>reload</button>
+    <script>
+        $(document).ready(function () {
+            $('#label1').on('click', function () {
+                console.log("皮卡")
+            })
+            $('#check1').on('click', function () {
+                console.log("checkbox被點擊")
+            })
+            $('#label2').on('click', function (a) {
+                console.log(a.target);
+                console.log("皮卡222");
+
+            })
+            $('#check2').on('click', function (bb) {
+                console.log(bb.target);
+                console.log("checkbox被點擊222")
+                bb.stopPropagation();
+            })
+        });
+        $('button').on('click', function () {
+            window.location.reload();
+        })
+
+        // 40. 關於點選label元素後聚焦在input元素上
+
+    </script>
+
+</body>
+
+</html>

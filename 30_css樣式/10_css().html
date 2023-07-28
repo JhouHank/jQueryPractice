@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/30_cssstyle.css">
     <script src="../_js/jquery-3.6.0.js"></script>
+    <style>
+        p {
+            background-color: lightblue;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,7 +45,34 @@
 
             // 50. $().css() 其他型態的參數
             //  * 15_練習_點選改變字型大小.html 練習後回來補充說明
+            // v1 (不好，因為字串相連)
+            $('#p2').prop('style', 'color:red;font-size:3rem;');
+            // v2 (不好，沒辦法一次選擇多個元素)
+            $('#p3').css('color', 'red');
+            $('#p3').css('font-size', '3rem');
+            // v3
+            $('#p4').css({
+                color: "blue", fontSize: "3rem"
+            })
+            // v4
+            $('#p5').css('color', 'red').css('font-size', '3rem');
+            // $('p').css('width','200px');
+            // css(屬性,函式)
+            // 會用在你需要針對個別元素給個別的樣式設定的時候
+            // 
+            $('p').css('width', function (index, elem) {
+                return `${50 * index}px`;
+            })
+            // 陣列
+            let x = $('#p5').css(['color', 'fontSize']);
+            console.log(x);
+            console.log(x.color);
+            console.log(x.fontSize);
 
+            let y = $('#p5').css(['color', 'font-size']);
+            console.log(y);
+            console.log(y.color);
+            console.log(y.font - size);  //這樣會出錯
         })
     </script>
 

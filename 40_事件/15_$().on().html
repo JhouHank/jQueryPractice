@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <h3>Hello!</h3>
+    <h3>Hello!</h3>
+    <h3>Hello!</h3>
+    <h3>Hello!</h3>
+    <h3>Hello!</h3>
+    <h3>Hello!</h3>
+
+    <script>
+        $(document).ready(function () {
+            $('h3').on('click', function () {
+                $(this).text("123");
+            })
+        });
+        // 10. 透過 $().on() 掛載 click 事件到 h3
+        //   * click 後改變 h3 的內容
+
+    </script>
+
+</body>
+
+</html>
