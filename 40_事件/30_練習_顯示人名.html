@@ -5,15 +5,68 @@
     <meta charset="UTF-8">
     <script src="../_js/jquery-3.6.0.js"></script>
     <!-- 10. 參考結果設定對應 css -->
+    <style>
+        img {
+            border: 5px solid lightgreen;
+        }
+
+        div {
+            float: left;
+        }
+
+        .hideElement {
+            visibility: hidden;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- 20. 設定袋子，裡面裝一張圖片和一段文字 -->
+    <!-- 20. 設定div，裡面裝一張圖片和一段文字 -->
+    <div>
+        <img src="./images/001.png" alt="">
+        <p>妙蛙種子</p>
+    </div>
+    <div>
+        <img src="./images/002.png" alt="">
+        <p>妙蛙草</p>
+    </div>
+    <div>
+        <img src="./images/003.png" alt="">
+        <p>妙蛙花</p>
+    </div>
+
 
     <script>
-        $(function () {
+        $(document).ready(function () {
             // 30. 參考執行結果，條列所需的 樣式以及事件
-        });
+            // 文字在一開始的時候被隱藏
+            // 在滑鼠經過時，文字要出現
+            // 在滑鼠離開時，文字要消失
+
+            // $('p').css('visibility', 'hidden');
+            // 發生mouseover事件的div元素
+            // 往該div元素的「內部」找有沒有p元素
+            // $('div').on('mouseover', function () {
+            //     $(this).find('p').css('visibility', 'visible');
+            // });
+            // $('div').on('mouseleave', function () {
+            //     $(this).find('p').css('visibility', 'hidden');
+            // });
+            // 第二版
+            // $('div').on({
+            //     mouseover: function () {
+            //         $(this).find('p').css('visibility', 'visible');
+            //     },
+            //     mouseleave: function () {
+            //         $(this).find('p').css('visibility', 'hidden');
+            //     }
+            // });
+            // 第三版 : 新東西
+            $('p').addClass('hideElement');
+            $('div').hover(function () {
+                $(this).find('p').toggleClass('hideElement');
+            })
+        })
     </script>
 </body>
 

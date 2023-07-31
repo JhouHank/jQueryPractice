@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.6.0.js"></script>
+</head>
+
+<body>
+    <input type="checkbox" id="mfee41"> All
+    <input type="checkbox" id="apple" name="mfee41"> Apple
+    <input type="checkbox" id="bee" name="mfee41"> Bee
+    <input type="checkbox" id="cat" name="mfee41"> Cat
+    <script>
+        // 10. 當 All 被勾選的時候，其餘 checkbox 也會被勾選起來
+        //   * 還有其他未列出的勾選連動，請一併考慮
+        // 當我勾選ALL，全部都要被選到
+        // 當我取消勾選ALL，全部都要被取消
+        // 當我勾選ALL之後，取消勾選三個任一，ALL也要被取消
+        // 當我不勾選ALL，但三個都一一勾選，在勾選到第三個時，ALL要被勾選
+        // v2 JQ
+        $(document).ready(function () {
+            $('input').on('change', function () {
+                // console.log(this.id);
+                // console.log(this.checked);
+                // console.log($(this).prop('checked'))
+                // 失敗版本一
+                // $('input[name="mfee41"]').prop('checked', $(this).prop('checked'))
+                // 失敗版本二
+                // $('input[name="mfee41"]').prop('checked', $('#all').prop('checked'))
+                // 成功版本
+                $(`input[name=${this.id}]`).prop('checked', this.checked);
+                $('#mfee41').prop('checked', $('input[name="mfee41"]').length == $('input[name="mfee41"]:checked').length);
+            })
+        });
+    </script>
+
+</body>
+
+</html>

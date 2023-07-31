@@ -3,21 +3,45 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/40_events.css">
     <script src="../_js/jquery-3.6.0.js"></script>
 </head>
 
 <body>
-
-
-    <h4>jQuery event.data</h4>
+    <!-- <h4>jQuery event.data</h4>
     <p><a href='https://api.jquery.com/event.data/'>https://api.jquery.com/event.data/</a></p>
-
     <pre>
         練習製作代辦項目清單
         1. 使用者可以增加代辦項目
         2. 使用者點選代辦項目文字表示該項目已完成 (添加刪除線)
-    </pre>
+    </pre> -->
+    <input type="text" id="item">
+    <button>加入清單</button><br>
+    <h1>新增的項目「無法」刪除</h1>
+    <ul id="first">
+        <li>買牛奶</li>
+        <li>領蝦皮包裹</li>
+    </ul>
+    <h1>新增的項目「可以」刪除</h1>
+    <ul id="second">
+        <li>買牛奶</li>
+        <li>領蝦皮包裹</li>
+    </ul>
+    <script>
+        $(document).ready(function () {
+            $('button').on('click', function () {
+                $('#first,#second').append(`<li>${$('input').val()}</li>`)
+            })
+            // 沒針對動態生成，就使用以下的方法
+            $('#first>li').on('click', function () {
+                $(this).css('textDecoration', 'line-through');
+            })
+            // 針對動態生成的元素，要使用以下的方法才能用
+            // 注意父元素跟子元素
+            $('#second').on('click', 'li', function () {
+                $(this).css('textDecoration', 'line-through');
+            })
+        });
+    </script>
 
 
 </html>

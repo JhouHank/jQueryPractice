@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 指定的秒數，做指定的事情
+        // setInterval(要做的事情, 1000)
+        // // v1: 這是成功的程式碼
+        // setInterval(   function(){ console.log('測試一') }   , 1000);
+        // // v2: 這是成功的程式碼
+        // function apple(){
+        //     console.log('測試二')
+        // }
+        // setInterval(   apple   , 1000);
+        // // v3: 這樣會成功還是失敗?
+        // function dog(){
+        //     console.log('測試三')
+        // }
+        // setInterval(   dog()   , 1000);
+        // // v4: 這樣會成功還是失敗?
+        // setInterval(   Math.random() , 1000  );
+        // // // v5: 這樣會成功還是失敗?
+        // function bee(){
+        //     console.log('測試五');
+        //     return 123456;
+        // }
+        // var temp1 = bee();
+        // console.log(  temp1  );
+        // setInterval(   bee() , 1000  )
+        // v6: 這樣會成功還是失敗?
+        function cat() {
+            console.log('測試6-1');
+            return function () { console.log('測試6-2'); };
+        }
+        var temp2 = cat();
+        console.log(temp2);
+        setInterval(cat(), 1000)
+    </script>
+</body>
+
+</html>

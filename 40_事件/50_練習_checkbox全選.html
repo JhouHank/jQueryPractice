@@ -7,19 +7,36 @@
 </head>
 
 <body>
-
-    <input type="checkbox"> All
-    <input type="checkbox"> Apple
-    <input type="checkbox"> Bee
-    <input type="checkbox"> Cat
-
+    <input type="checkbox" id="all"> All
+    <input type="checkbox" id="apple" name="like"> Apple
+    <input type="checkbox" id="bee" name="like"> Bee
+    <input type="checkbox" id="cat" name="like"> Cat
     <script>
-
         // 10. 當 All 被勾選的時候，其餘 checkbox 也會被勾選起來
         //   * 還有其他未列出的勾選連動，請一併考慮
-
+        // 當我勾選ALL，全部都要被選到
+        // 當我取消勾選ALL，全部都要被取消
+        // 當我勾選ALL之後，取消勾選三個任一，ALL也要被取消
+        // 當我不勾選ALL，但三個都一一勾選，在勾選到第三個時，ALL要被勾選
+        // v1 JS
+        let chkAll = document.getElementById('all');
+        let chkOther = document.getElementsByName('like');
+        function dog() {
+            for (let i = 0; i < chkOther.length; i++) {
+                chkOther[i].checked = chkAll.checked;
+            }
+        }
+        chkAll.addEventListener('change', dog);
+        function zoo() {
+            let x = document.querySelectorAll('input[name="like"]').length;
+            let y = document.querySelectorAll('input[name="like"]:checked').length;
+            chkAll.checked = (x == y);
+        }
+        for (let i = 0; i < chkOther.length; i++) {
+            chkOther[i].addEventListener('change', zoo);
+        }
     </script>
-    
+
 </body>
 
 </html>
