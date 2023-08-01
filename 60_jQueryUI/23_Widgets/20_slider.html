@@ -2,14 +2,165 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">    
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="../../_jquery-ui-1.13.2/jquery-ui.css">
     <script src="../../_js/jquery-3.6.0.js"></script>
     <script src="../../_jquery-ui-1.13.2/jquery-ui.js"></script>
+    <style>
+        #red,
+        #green,
+        #blue {
+            float: left;
+            clear: left;
+            width: 300px;
+            margin: 15px;
+        }
+
+        #swatch {
+            width: 120px;
+            height: 100px;
+            margin-top: 18px;
+            margin-left: 350px;
+            background-image: none;
+        }
+
+        #red .ui-slider-range {
+            background: #ef2929;
+        }
+
+        #red .ui-slider-handle {
+            border-color: #ef2929;
+        }
+
+        #green .ui-slider-range {
+            background: #8ae234;
+        }
+
+        #green .ui-slider-handle {
+            border-color: #8ae234;
+        }
+
+        #blue .ui-slider-range {
+            background: #729fcf;
+        }
+
+        #blue .ui-slider-handle {
+            border-color: #729fcf;
+        }
+
+        #handle,
+        #handle2,
+        #handle3 {
+            width: 1.75em;
+            height: 1.6em;
+            top: 50%;
+            margin-top: -.8em;
+            text-align: center;
+            line-height: 1.6em;
+        }
+    </style>
+    <script>
+        $(function () {
+            // function refreshSwatch() {
+            //     let red = $("#red").slider("value");
+            //     let green = $("#green").slider("value");
+            //     let blue = $("#blue").slider("value");
+            //     let hex = hexFromRGB(red, green, blue);
+            //     $("#swatch").css("background-color", "#" + hex);
+            // }
+
+            // $("#red, #green, #blue").slider({
+            //     orientation: "horizontal",
+            //     range: "min",
+            //     max: 255,
+            //     value: 127,
+            //     slide: refreshSwatch,
+            //     change: refreshSwatch
+            // });
+            // $("#red").slider("value", 255);
+            // $("#green").slider("value", 140);
+            // $("#blue").slider("value", 60);
+        });
+    </script>
+    <script>
+        $(function () {
+            let handle = $("#handle");
+            let handle2 = $("#handle2");
+            let handle3 = $("#handle3");
+            $("#red").slider({
+                create: function () {
+                    handle.text($(this).slider("value"));
+                },
+                slide: refreshColorRed,
+                change: refreshColor,
+                orientation: "horizontal",
+                range: "min",
+                max: 255,
+            });
+            $("#green").slider({
+                create: function () {
+                    handle2.text($(this).slider("value"));
+                },
+                slide: refreshColorGreen,
+                change: refreshColor,
+                orientation: "horizontal",
+                range: "min",
+                max: 255,
+            });
+            $("#blue").slider({
+                create: function () {
+                    handle3.text($(this).slider("value"));
+                },
+                slide: refreshColorBlue,
+                change: refreshColor,
+                orientation: "horizontal",
+                range: "min",
+                max: 255,
+            });
+            function refreshColorRed(event, ui) {
+                handle.text(ui.value);
+                let red = $("#red").slider("value");
+                let green = $("#green").slider("value");
+                let blue = $("#blue").slider("value");
+                $("#swatch").css("background-color", `rgb(${red},${green},${blue})`);
+            }
+            function refreshColorGreen(event, ui) {
+                handle2.text(ui.value);
+                let red = $("#red").slider("value");
+                let green = $("#green").slider("value");
+                let blue = $("#blue").slider("value");
+                $("#swatch").css("background-color", `rgb(${red},${green},${blue})`);
+            }
+            function refreshColorBlue(event, ui) {
+                handle3.text(ui.value);
+                let red = $("#red").slider("value");
+                let green = $("#green").slider("value");
+                let blue = $("#blue").slider("value");
+                $("#swatch").css("background-color", `rgb(${red},${green},${blue})`);
+            }
+            function refreshColor() {
+                let red = $("#red").slider("value");
+                let green = $("#green").slider("value");
+                let blue = $("#blue").slider("value");
+                $("#swatch").css("background-color", `rgb(${red},${green},${blue})`);
+            }
+            $("#red").slider("value", 255);
+            $("#green").slider("value", 140);
+            $("#blue").slider("value", 60);
+            // $("#red, #green, #blue").slider({
+            //     orientation: "horizontal",
+            //     range: "min",
+            //     max: 255,
+            //     value: 127,
+            //     slide: refreshSwatch,
+            //     change: refreshSwatch,
+            // });
+        });
+    </script>
 </head>
 
-<body>
-    
+<body class="ui-widget-content" style="border:0;">
+
     <!-- 10. jQuery UI 官網文件所在 -->
     <!--    API Documentation > (左側) Widgets > Slider Widget -->
     <!--    網址： https://api.jqueryui.com/slider/ -->
@@ -20,8 +171,26 @@
 
     <!--    Demos > Widgets > Slider > (右側) Examples > Custom handle -->
     <!--      Custom handle: https://jqueryui.com/slider/#custom-handle -->
-
-
+    <p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+        <span class="ui-icon ui-icon-pencil" style="float:left; margin:-2px 5px 0 0;"></span>
+        Simple Colorpicker
+    </p>
+    <div id="red">
+        <div id="handle" class="ui-slider-handle"></div>
+    </div>
+    <div id="green">
+        <div id="handle2" class="ui-slider-handle"></div>
+    </div>
+    <div id="blue">
+        <div id="handle3" class="ui-slider-handle"></div>
+    </div>
+    <div id="swatch" class="ui-widget-content ui-corner-all"></div>
+    <br>
+    <br>
+    <hr>
+    <div id="slider">
+        <div id="handle" class="ui-slider-handle"></div>
+    </div>
     <!-- 20. 請試著合併上述兩個範例 -->
     <!--   * 在 Colorpicker 中 增加數字顯示 -->
 </body>

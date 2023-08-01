@@ -6,6 +6,53 @@
     <link rel="stylesheet" href="../../_jquery-ui-1.13.2/jquery-ui.css">
     <script src="../../_js/jquery-3.6.0.js"></script>
     <script src="../../_jquery-ui-1.13.2/jquery-ui.js"></script>
+    <style>
+        .drag {
+            width: 100px;
+            height: 100px;
+            padding: 0.5em;
+            float: left;
+            margin: 10px 10px 10px 0;
+        }
+
+        .drop {
+            font-size: 50px;
+            width: 50%;
+            height: auto;
+            padding: 10px;
+            /* float: left; */
+            margin: 0 auto;
+            display: flex;
+        }
+    </style>
+    <script>
+        ////且drop區要回復成灰色
+        $(function () {
+            $(".drag").draggable({
+                ///被拖的時候改文字
+                drag: function (event, ui) {
+                    $(this).find("p").html("我被拖了！");
+                }
+            });
+            $(".drop").droppable({
+                ////當東西開始拖，但還沒放開，drop區要改文字
+                activate: function (event, ui) {
+                    $(this).find("p").html("拖到這裡！");
+                },
+                ////當東西，放開了，被拖的要消失，
+                drop: function (event, ui) {
+                    $(this).addClass("ui-state-highlight").find("p").html("放下");
+                    ui.draggable.hide();
+                },
+                over: function (event, ui) {
+                    $(this).find("p").html("拖進來");
+                },
+                out: function (event, ui) {
+                    $(this).find("p").html("離開");
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -15,8 +62,8 @@
     <!--    API Documentation > (左側) Interactions > Droppable Widget -->
     <!--    網址： https://api.jqueryui.com/draggable/ -->
     <!--    網址： https://api.jqueryui.com/droppable/ -->
-   
-    
+
+
 
     <!-- 15. 複製官方網站的範例 -->
     <!--    Demos > Interactions > Droppable > Default functionality -->
@@ -24,13 +71,22 @@
 
 
     <!-- 20. 改寫範例，增加可以拖動的選項 -->
-
+    <div class="drop ui-widget-header">
+        <p>Drop here</p>
+    </div>
+    <!-- //////要被拖的東西///// -->
+    <div class="drag ui-widget-content">
+        <p>111 Drag me to my target</p>
+    </div>
+    <div class="drag ui-widget-content">
+        <p>222 Drag me to my target</p>
+    </div>
+    <div class="drag ui-widget-content">
+        <p>333 Drag me to my target</p>
+    </div>
     <script>
-        
         // 30. 增加拖曳時，改變內容文字
-
         // 40. 增加目的地的事件偵測
-
     </script>
 
 </body>

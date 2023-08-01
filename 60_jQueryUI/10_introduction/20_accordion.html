@@ -8,7 +8,7 @@
     <script src="../../_jquery-ui-1.13.2/jquery-ui.js"></script>
     <script>
         $(function () {
-            $("#accordion").accordion();
+            $("#accordion").accordion({ height: content });
         });
     </script>
 
@@ -22,16 +22,14 @@
 
     <div id="accordion">
         <p>妙蛙種子</p>
-        <div>
+        <div style="display: flex;">
             <img src="../images/001.png" alt="">
-            <hr>
             <p>
                 Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
                 ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
                 amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
                 odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
             </p>
-            <hr>
             <p>
                 Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
                 ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit

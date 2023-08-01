@@ -6,6 +6,40 @@
     <link rel="stylesheet" href="../../_jquery-ui-1.13.2/jquery-ui.css">
     <script src="../../_js/jquery-3.6.0.js"></script>
     <script src="../../_jquery-ui-1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            var dateFormat = "yy-mm-dd";
+            let from = $("#from").datepicker({
+                defaultDate: "+1w",
+                changeYear: true,
+                changeMonth: false,
+                numberOfMonths: 1,
+                yearRange: "c-1:c+1",
+                dateFormat: "yy-mm-dd"
+            }).on("change", function () {
+                to.datepicker("option", "minDate", getDate(this));
+            })
+            let to = $("#to").datepicker({
+                defaultDate: "+1w",
+                changeYear: true,
+                changeMonth: false,
+                numberOfMonths: 1,
+                yearRange: "c-1:c+1",
+                dateFormat: "yy-mm-dd"
+            }).on("change", function () {
+                from.datepicker("option", "maxDate", getDate(this));
+            });
+            function getDate(element) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate(dateFormat, element.value);
+                } catch (error) {
+                    date = null;
+                }
+                return date;
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -21,7 +55,10 @@
     <!-- 20. 增加|調整 設定 -->
     <!--    a. 年份改為下拉清單，限制 系統年-1 ~ 系統年+2 -->
     <!--    b. 設定日期格式 例如 2099/12/31 -->
-
+    <label for="from">From</label>
+    <input type="text" id="from" name="from">
+    <label for="to">to</label>
+    <input type="text" id="to" name="to">
 </body>
 
 </html>

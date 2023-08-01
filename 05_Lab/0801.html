@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // var x = "apple";
+        // console.log(x);
+
+        // var y = x.padStart(8);
+        // console.log(y);
+
+        // var z = x.padStart(8, "#");
+        // console.log(z);
+        // 模仿現有的 padStart 製作一個自己的 myPadStart
+        function myPadStart(a, b, c = " ") {
+            let combine = "";
+            let result = "";
+            if (b - a.length > 0) {
+                for (i = 0; i < b - a.length; i++) {
+                    // console.log(a, i);
+                    combine += c;
+                    // console.log(combine)
+                    result = `${combine}${a}`;
+                    //console.log(result);
+                }
+            } else {
+                return a;
+            }
+            return result;
+        }
+        var a = myPadStart('apple', 8);
+        console.log(a);  // 期待目標: '   apple'
+        var b = myPadStart('apple', 8, '#');
+        console.log(b);  // 期待目標: '###apple'
+        var c = myPadStart('apple', 2, '#');
+        console.log(c);
+    </script>
+</body>
+
+</html>

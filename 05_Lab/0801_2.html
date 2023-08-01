@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../_js/jquery-3.6.0.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <button>0</button>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button onclick="window.location.reload()">重整</button>
+    <hr>
+    <span></span>
+    <h1></h1>
+    <script>
+        $(document).ready(function () {
+            let first = "";
+            // for (let i = 0; i <= 10; i++) {
+            //     $(`#${i}`).on('click', function () {
+            //         console.log("按鈕")
+            //         first += `${i}`
+            //         $('h1').text(`${first}`);
+            //     })
+            // }
+            $('button').on('click', function () {
+                console.log(this.innerText);
+                first += this.innerText;
+                $('h1').text(`${first}`);
+            })
+        });
+    </script>
+</body>
+
+</html>

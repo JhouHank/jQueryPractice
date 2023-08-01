@@ -6,6 +6,65 @@
     <link rel="stylesheet" href="../../_jquery-ui-1.13.2/jquery-ui.css">
     <script src="../../_js/jquery-3.6.0.js"></script>
     <script src="../../_jquery-ui-1.13.2/jquery-ui.js"></script>
+    <style>
+        #feedback {
+            font-size: 1.4em;
+        }
+
+        #selectable .ui-selecting {
+            background: #FECA40;
+        }
+
+        #selectable .ui-selected {
+            background: #F39814;
+            color: white;
+        }
+
+        #selectable {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 60%;
+        }
+
+        #selectable li {
+            margin: 3px;
+            padding: 0.4em;
+            font-size: 20px;
+            height: auto;
+        }
+    </style>
+    <script>
+        $(function () {
+            $("#selectable").selectable({
+                stop: function () {
+                    let temp = "";
+                    $('#selected').text(`${$('.ui-selected').text()}`);
+                    $('li').not('.ui-selected').each(function () {
+                        //console.log($(this).text());
+                        temp += `${$(this).text()},`;
+                    })
+                    temp = temp.substring(0, temp.lastIndexOf(','))
+                    $('#unselected').text(temp);
+                    // let result = $("#selected").empty();
+                    // let un_result = $("#unselected").empty();
+                    // let temp = "";
+                    // $(".ui-selected", this).each(function () {
+                    //     let index = $("#selectable li").index(this);
+                    //     result.append(`Item${index + 1}`);
+                    // });
+                    // $(".ui-selected", this).each(function () {
+                    //     var index = $("#selectable li").index(this);
+                    //     for (let i = 1; i < 7; i++) {
+                    //         if (i !== index + 1) {
+                    //             un_result.append(`Item${i} `);
+                    //         }
+                    //     }
+                    // });
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -17,7 +76,18 @@
     <!-- 15. 複製官方網站的範例 -->
     <!--    Demos > Interactions > Selectable > (右側) Examples > serialize -->
     <!--    網址：https://jqueryui.com/selectable/#serialize -->
-
+    <p id="feedback">
+        <span>你已經選取了：</span> <span id="selected">none</span>
+    </p>
+    <p>未選取的：<span id="unselected">none</span></p>
+    <ol id="selectable">
+        <li class="ui-widget-content">蘋果</li>
+        <li class="ui-widget-content">香蕉</li>
+        <li class="ui-widget-content">第三個</li>
+        <li class="ui-widget-content">第四個</li>
+        <li class="ui-widget-content">第五個</li>
+        <li class="ui-widget-content">第六個</li>
+    </ol>
     <script>
         //    20. 動態顯示 已選取 & 未選取 的清單
     </script>
